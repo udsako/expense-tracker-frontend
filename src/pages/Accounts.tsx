@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import api from '../api';
+import { PageCardsSkeleton } from '../components/Skeleton';
 
 type AccountCategory = 'commercial_bank' | 'mfb' | 'fintech';
 
@@ -218,8 +219,9 @@ export default function Accounts() {
   };
 
   if (loading) {
-    return <div style={{ padding: '2rem', textAlign: 'center' }}>Loading accounts...</div>;
+    return <PageCardsSkeleton />;
   }
+
 
   return (
     <div style={{ maxWidth: '980px', margin: '0 auto', padding: '2rem 1rem' }}>

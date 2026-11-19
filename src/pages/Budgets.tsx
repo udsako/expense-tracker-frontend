@@ -2,6 +2,8 @@ import { useEffect, useMemo, useState } from 'react';
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { Bar, BarChart, CartesianGrid, Cell, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 import api from '../api';
+import { PageCardsSkeleton } from '../components/Skeleton';
+
 
 interface Account {
   id: number;
@@ -123,8 +125,9 @@ export default function Budgets() {
   };
 
   if (loading) {
-    return <div style={{ padding: '2rem', textAlign: 'center' }}>Loading budgets...</div>;
+    return <PageCardsSkeleton />;
   }
+
 
   return (
     <div style={{ maxWidth: '1040px', margin: '0 auto', padding: '2rem 1rem' }}>

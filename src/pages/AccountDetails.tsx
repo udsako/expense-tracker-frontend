@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { Bar, BarChart, CartesianGrid, Cell, Legend, Pie, PieChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 import api from '../api';
+import { DashboardSkeleton } from '../components/Skeleton';
 
 interface Transaction {
   id: number;
@@ -200,8 +201,9 @@ export default function AccountDetails() {
   };
 
   if (loading || !account) {
-    return <div style={{ padding: '2rem', textAlign: 'center' }}>Loading account statement...</div>;
+    return <DashboardSkeleton />;
   }
+
 
   return (
     <div style={{ maxWidth: '1040px', margin: '0 auto', padding: '2rem 1rem' }}>
